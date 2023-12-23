@@ -9,7 +9,7 @@ script = ExtResource("1_yxus1")
 [node name="Input" parent="." instance=ExtResource("1_fx57a")]
 
 [node name="Output" parent="." instance=ExtResource("1_fx57a")]
-position = Vector2(-64, 128)
+position = Vector2(-32, 64)
 
 [node name="Output2" parent="." instance=ExtResource("1_fx57a")]
-position = Vector2(64, 128)
+position = Vector2(32, 64)

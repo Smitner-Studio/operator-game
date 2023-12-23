@@ -1,9 +1,10 @@
 extends Node2D
 
+class_name Wire
 
-@onready var rope: Rope = $Rope
-@onready var start: Plug = $Start
-@onready var end: Plug = $End
+@export var rope: Rope
+@export var start: Plug
+@export var end: Plug
 
 @export_group("Visuals")
 @export var color: Color = Color.WHITE
@@ -25,6 +26,13 @@ func _ready():
 	
 	start.pulse.connect(end.receive_pulse)
 	end.pulse.connect(start.receive_pulse)
+	
+	connect_to_underlying_sockets()
+
+func connect_to_underlying_sockets():
+	await get_tree().create_timer(0.5).timeout
+	start.release()
+	end.release()
 
 func _process(delta):
 	if start.holding:

@@ -1,18 +1,25 @@
 extends Node
-class_name MorseCodeEncoder
+class_name OldMorseCodeEncoder
 
-signal pulse
+@export var output_socket: Socket
+@export var message: String = "HELLO WORLD"
 
 var time_to_next = 0;
 var message_buffer = []
+func _ready():
+	pass
 	
 func _process(delta):
 	var current = Time.get_ticks_msec()
 	if current > time_to_next and !message_buffer.is_empty():
 		do_next()
+	
+func _input(event):
+	if (event.is_action("ui_accept")):
+		set_buffer()
+		time_to_next = Time.get_ticks_msec()
 
-func set_buffer(message: String):
-	time_to_next = Time.get_ticks_msec()
+func set_buffer():
 	var encoded = MorseCodeSystem.encode(message.to_upper())
 	prepare_encoded_buffer(encoded)
 	
@@ -37,6 +44,6 @@ func do_next():
 	time_to_next = Time.get_ticks_msec() + (t * 1000)
 
 func emit_pulse(len: float):
-	pulse.emit(len)  
+	output_socket.emit_pulse(len)  
 
 

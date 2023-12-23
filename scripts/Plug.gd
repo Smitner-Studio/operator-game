@@ -61,7 +61,6 @@ func release():
 			var new_socket = x as Socket
 			if !new_socket.occupied:
 				connect_to_socket(new_socket)
-				print("connecte")
 				break
 	holding = false
 	

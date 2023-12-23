@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvwmwiwkjhg1r"]
+[gd_scene load_steps=11 format=3 uid="uid://cvwmwiwkjhg1r"]
 
 [ext_resource type="Script" path="res://scripts/Wire.gd" id="1_mm6a5"]
 [ext_resource type="Script" path="res://scripts/Rope.gd" id="2_5jjlm"]
 [ext_resource type="Script" path="res://scripts/Plug.gd" id="3_2pt5x"]
 [ext_resource type="Texture2D" uid="uid://bioi0qb3we7ri" path="res://sprites/plug.png" id="3_4wbsj"]
+[ext_resource type="Script" path="res://scripts/DebugWireDraw.gd" id="5_t1ih8"]
 
 [sub_resource type="Curve" id="Curve_yjcac"]
 _data = [Vector2(0, 1), 0.0, -2.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
@@ -24,13 +25,17 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_fsx7d"]
 radius = 32.0
 
-[node name="Wire" type="Node2D"]
+[node name="Wire" type="Node2D" node_paths=PackedStringArray("rope", "start", "end")]
 script = ExtResource("1_mm6a5")
+rope = NodePath("Rope")
+start = NodePath("Start")
+end = NodePath("End")
 holdingStartCurve = SubResource("Curve_yjcac")
 holdingEndCurve = SubResource("Curve_skp0j")
 notHoldingCurve = SubResource("Curve_kv8u4")
 
 [node name="Rope" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_5jjlm")
 ropeLength = 50
 gravity = Vector2(2.08165e-12, 40)
@@ -45,6 +50,7 @@ end_cap_mode = 2
 antialiased = true
 
 [node name="Start" type="Area2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_2pt5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Start"]
@@ -55,7 +61,8 @@ texture = ExtResource("3_4wbsj")
 shape = SubResource("CircleShape2D_fsx7d")
 
 [node name="End" type="Area2D" parent="."]
-position = Vector2(194, 0)
+unique_name_in_owner = true
+position = Vector2(0, 184)
 script = ExtResource("3_2pt5x")
 
 [node name="Sprite2D" type="Sprite2D" parent="End"]
@@ -64,3 +71,6 @@ texture = ExtResource("3_4wbsj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="DebugDraw" type="Node2D" parent="."]
+script = ExtResource("5_t1ih8")

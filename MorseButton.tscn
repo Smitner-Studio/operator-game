@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdfjj1opbtylj"]
+
+[ext_resource type="Script" path="res://scripts/MorseButton.gd" id="1_iq876"]
+[ext_resource type="Texture2D" uid="uid://47sh46fnmn7" path="res://sprites/button-Sheet.png" id="2_qkdpi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkpqf"]
+size = Vector2(64, 64)
+
+[node name="Button" type="Area2D"]
+script = ExtResource("1_iq876")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qkdpi")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kkpqf")

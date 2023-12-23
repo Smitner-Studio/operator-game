@@ -1,12 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://2n5up2ugjeu4"]
+[gd_scene load_steps=17 format=3 uid="uid://2n5up2ugjeu4"]
 
-[ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_ikual"]
 [ext_resource type="PackedScene" uid="uid://4sqxn8j7wg1v" path="res://SplitterSocket.tscn" id="1_xfkek"]
 [ext_resource type="PackedScene" uid="uid://cvwmwiwkjhg1r" path="res://Wire.tscn" id="3_djxq7"]
 [ext_resource type="PackedScene" uid="uid://bvb6jamteg61b" path="res://SpeakerSocket.tscn" id="4_3os0g"]
-[ext_resource type="Script" path="res://scripts/MorseCodeEncoder.gd" id="5_3qdlp"]
 [ext_resource type="PackedScene" uid="uid://dh6q0ydy17h28" path="res://DecoderSocket.tscn" id="5_jiu0s"]
+[ext_resource type="Script" path="res://scripts/Wire.gd" id="6_uir82"]
 [ext_resource type="PackedScene" uid="uid://hle42j32tprb" path="res://ManualOutputSocket.tscn" id="7_bxa4c"]
+[ext_resource type="Script" path="res://scripts/Rope.gd" id="7_qyhlf"]
+[ext_resource type="Script" path="res://scripts/Plug.gd" id="8_0bil3"]
+[ext_resource type="Texture2D" uid="uid://bioi0qb3we7ri" path="res://sprites/plug.png" id="9_3cm6e"]
+[ext_resource type="Script" path="res://scripts/DebugWireDraw.gd" id="10_wh5gs"]
+[ext_resource type="PackedScene" uid="uid://e3tb6odtw03n" path="res://EncoderSocket.tscn" id="13_4v1bs"]
+
+[sub_resource type="Curve" id="Curve_yjcac"]
+_data = [Vector2(0, 1), 0.0, -2.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_skp0j"]
+_data = [Vector2(2.08165e-12, 0.2), 0.0, 2.08165e-12, 0, 0, Vector2(1, 1), 2.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kv8u4"]
+_data = [Vector2(2.08165e-12, 0.2), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_w17am"]
+_data = [Vector2(0, 0.520231), 0.0, 0.722648, 0, 0, Vector2(1, 0.930636), -0.774769, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsx7d"]
+radius = 32.0
 
 [node name="World" type="Node2D"]
 
@@ -28,35 +51,127 @@ position = Vector2(256, 192)
 [node name="ManualOutputSocket" parent="." instance=ExtResource("7_bxa4c")]
 position = Vector2(-384, 64)
 
-[node name="Output" parent="." instance=ExtResource("1_ikual")]
-position = Vector2(-512, -256)
+[node name="EncoderSocket" parent="." instance=ExtResource("13_4v1bs")]
+position = Vector2(-511, -252)
 
 [node name="Wire" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(-128, -64)
-color = Color(0.71, 0, 0, 1)
+position = Vector2(-416, 30)
 
-[node name="Wire3" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(-128, 64)
+[node name="Wire4" type="Node2D" parent="." node_paths=PackedStringArray("rope", "start", "end")]
+position = Vector2(-507, -255)
+script = ExtResource("6_uir82")
+rope = NodePath("Rope")
+start = NodePath("Start")
+end = NodePath("End")
 color = Color(0.71, 0, 0, 1)
+holdingStartCurve = SubResource("Curve_yjcac")
+holdingEndCurve = SubResource("Curve_skp0j")
+notHoldingCurve = SubResource("Curve_kv8u4")
 
-[node name="Wire4" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(-128, 0)
-color = Color(0.71, 0, 0, 1)
+[node name="Rope" type="Node2D" parent="Wire4"]
+unique_name_in_owner = true
+script = ExtResource("7_qyhlf")
+ropeLength = 50
+gravity = Vector2(2.08165e-12, 40)
 
-[node name="Wire5" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(-128, 192)
+[node name="Line2D" type="Line2D" parent="Wire4/Rope"]
+width = 25.0
+width_curve = SubResource("Curve_w17am")
+default_color = Color(1, 0.101961, 0.101961, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Start" type="Area2D" parent="Wire4"]
+unique_name_in_owner = true
+script = ExtResource("8_0bil3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wire4/Start"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_3cm6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wire4/Start"]
+shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="End" type="Area2D" parent="Wire4"]
+unique_name_in_owner = true
+position = Vector2(257, 1)
+script = ExtResource("8_0bil3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wire4/End"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_3cm6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wire4/End"]
+shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="DebugDraw" type="Node2D" parent="Wire4"]
+script = ExtResource("10_wh5gs")
+
+[node name="Wire5" type="Node2D" parent="." node_paths=PackedStringArray("rope", "start", "end")]
+position = Vector2(-219, -189)
+script = ExtResource("6_uir82")
+rope = NodePath("Rope")
+start = NodePath("Start")
+end = NodePath("End")
 color = Color(0.870588, 0.745098, 0.184314, 1)
+holdingStartCurve = SubResource("Curve_yjcac")
+holdingEndCurve = SubResource("Curve_skp0j")
+notHoldingCurve = SubResource("Curve_kv8u4")
+
+[node name="Rope" type="Node2D" parent="Wire5"]
+script = ExtResource("7_qyhlf")
+ropeLength = 50
+gravity = Vector2(2.08165e-12, 40)
+
+[node name="Line2D" type="Line2D" parent="Wire5/Rope"]
+width = 25.0
+width_curve = SubResource("Curve_w17am")
+default_color = Color(1, 0.101961, 0.101961, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Start" type="Area2D" parent="Wire5"]
+script = ExtResource("8_0bil3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wire5/Start"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_3cm6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wire5/Start"]
+shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="End" type="Area2D" parent="Wire5"]
+position = Vector2(290, -68)
+script = ExtResource("8_0bil3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wire5/End"]
+scale = Vector2(2, 2)
+texture = ExtResource("9_3cm6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wire5/End"]
+shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="DebugDraw" type="Node2D" parent="Wire5"]
+script = ExtResource("10_wh5gs")
 
 [node name="Wire6" parent="." instance=ExtResource("3_djxq7")]
 position = Vector2(-128, 128)
 color = Color(0.870588, 0.745098, 0.184314, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Start" parent="Wire6" index="1"]
+position = Vector2(227, -317)
 
-[node name="MC_Hello" type="Node" parent="." node_paths=PackedStringArray("output_socket")]
-script = ExtResource("5_3qdlp")
-output_socket = NodePath("../Output")
-message = " THIS IS FUCKING  SLOWX"
+[node name="End" parent="Wire6" index="2"]
+position = Vector2(484, -348)
+
+[node name="Wire2" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(285, 162)
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="PanelContainer" type="Control" parent="."]
 layout_mode = 3
@@ -103,3 +218,5 @@ text = "[b]\"A\"[/b]: \".-\"
 [b]\"Y\"[/b]: \"-.--\"
 [b]\"Z\"[/b]: \"--..\"
 "
+
+[editable path="Wire6"]

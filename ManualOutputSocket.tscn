@@ -1,30 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://hle42j32tprb"]
+[gd_scene load_steps=4 format=3 uid="uid://hle42j32tprb"]
 
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_eo28v"]
 [ext_resource type="Script" path="res://scripts/ManualOutputSocket.gd" id="1_icjix"]
-[ext_resource type="Script" path="res://scripts/Button.gd" id="2_qhp1w"]
-[ext_resource type="Texture2D" uid="uid://47sh46fnmn7" path="res://sprites/button-Sheet.png" id="4_f5cww"]
-[ext_resource type="Script" path="res://scripts/ClickableArea.gd" id="4_hgbhv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkpqf"]
-size = Vector2(128, 128)
+[ext_resource type="PackedScene" uid="uid://cdfjj1opbtylj" path="res://MorseButton.tscn" id="3_28udi"]
 
 [node name="ManualOutputSocket" type="Node2D"]
 script = ExtResource("1_icjix")
 
 [node name="Socket" parent="." instance=ExtResource("1_eo28v")]
+position = Vector2(-32, -32)
 
-[node name="ManualMorseEmitter" type="Node2D" parent="."]
-position = Vector2(-128, 0)
-script = ExtResource("2_qhp1w")
-
-[node name="ClickableArea" type="Area2D" parent="ManualMorseEmitter"]
-script = ExtResource("4_hgbhv")
-
-[node name="Sprite2D" type="Sprite2D" parent="ManualMorseEmitter/ClickableArea"]
-scale = Vector2(2, 2)
-texture = ExtResource("4_f5cww")
-hframes = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ManualMorseEmitter/ClickableArea"]
-shape = SubResource("RectangleShape2D_kkpqf")
+[node name="MorseButton" parent="." instance=ExtResource("3_28udi")]
+position = Vector2(-96, -32)

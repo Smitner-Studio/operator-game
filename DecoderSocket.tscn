@@ -3,42 +3,18 @@
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_r44bn"]
 [ext_resource type="Script" path="res://scripts/DecoderSocket.gd" id="1_y23fy"]
 [ext_resource type="Script" path="res://scripts/MorseCodeDecoder.gd" id="2_26oc1"]
-[ext_resource type="Texture2D" uid="uid://dv301wqkflbx3" path="res://sprites/screen.png" id="3_3crj4"]
+[ext_resource type="PackedScene" uid="uid://qrr3nd843jwg" path="res://Screen.tscn" id="3_fileb"]
 
-[node name="DecoderSocket" type="Node2D" node_paths=PackedStringArray("decoder", "socket", "label")]
+[node name="DecoderSocket" type="Node2D" node_paths=PackedStringArray("decoder", "socket", "screen")]
 script = ExtResource("1_y23fy")
 decoder = NodePath("Decoder")
 socket = NodePath("Socket")
-label = NodePath("Screen/Control/Label")
+screen = NodePath("Screen")
 
 [node name="Socket" parent="." instance=ExtResource("1_r44bn")]
+position = Vector2(32, -32)
 
-[node name="Screen" type="Node2D" parent="."]
-position = Vector2(128, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Screen"]
-scale = Vector2(2, 2)
-texture = ExtResource("3_3crj4")
-
-[node name="Control" type="Control" parent="Screen"]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = -56.0
-offset_top = -56.0
-offset_right = 56.0
-offset_bottom = 56.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="Screen/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-autowrap_mode = 1
-uppercase = true
+[node name="Screen" parent="." instance=ExtResource("3_fileb")]
 
 [node name="Decoder" type="Node" parent="."]
 script = ExtResource("2_26oc1")

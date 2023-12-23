@@ -2,8 +2,8 @@ extends Node2D
 
 @export var decoder: MorseCodeDecoder
 @export var socket: Socket
-@export var label: Label
+@export var screen: Screen
 
 func _ready():
 	socket.received_pulse.connect(decoder.receive_pulse)
-	decoder.decoded.connect(func(message): label.text += message)
+	decoder.decoded.connect(screen.append_text)
