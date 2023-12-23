@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://2n5up2ugjeu4"]
+[gd_scene load_steps=7 format=3 uid="uid://2n5up2ugjeu4"]
 
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_ikual"]
+[ext_resource type="PackedScene" uid="uid://4sqxn8j7wg1v" path="res://SplitterSocket.tscn" id="1_xfkek"]
 [ext_resource type="PackedScene" uid="uid://cvwmwiwkjhg1r" path="res://Wire.tscn" id="3_djxq7"]
 [ext_resource type="PackedScene" uid="uid://bvb6jamteg61b" path="res://SpeakerSocket.tscn" id="4_3os0g"]
 [ext_resource type="Script" path="res://scripts/MorseCodeEncoder.gd" id="5_3qdlp"]
@@ -8,17 +9,23 @@
 
 [node name="World" type="Node2D"]
 
+[node name="SplitterSocket" parent="." instance=ExtResource("1_xfkek")]
+position = Vector2(-256, -256)
+
+[node name="SplitterSocket2" parent="." instance=ExtResource("1_xfkek")]
+position = Vector2(64, -256)
+
 [node name="SpeakerSocket" parent="." instance=ExtResource("4_3os0g")]
-position = Vector2(64, -192)
+position = Vector2(320, -192)
 
 [node name="SpeakerSocket2" parent="." instance=ExtResource("4_3os0g")]
-position = Vector2(-384, 192)
+position = Vector2(320, -64)
 
 [node name="DecoderSocket" parent="." instance=ExtResource("5_jiu0s")]
 position = Vector2(256, 192)
 
 [node name="Output" parent="." instance=ExtResource("1_ikual")]
-position = Vector2(-256, -192)
+position = Vector2(-512, -256)
 
 [node name="Wire" parent="." instance=ExtResource("3_djxq7")]
 position = Vector2(-128, -64)
@@ -32,8 +39,16 @@ color = Color(0.71, 0, 0, 1)
 position = Vector2(-128, 0)
 color = Color(0.71, 0, 0, 1)
 
+[node name="Wire5" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(-128, 192)
+color = Color(0.870588, 0.745098, 0.184314, 1)
+
+[node name="Wire6" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(-128, 128)
+color = Color(0.870588, 0.745098, 0.184314, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="MC_Hello" type="Node" parent="." node_paths=PackedStringArray("output_socket")]
 script = ExtResource("5_3qdlp")

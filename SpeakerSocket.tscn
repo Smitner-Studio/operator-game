@@ -1,16 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvb6jamteg61b"]
+[gd_scene load_steps=4 format=3 uid="uid://bvb6jamteg61b"]
 
+[ext_resource type="Script" path="res://scripts/SpeakerSocket.gd" id="1_fk2sa"]
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_jdnkq"]
 [ext_resource type="PackedScene" uid="uid://cdt7jajrc6iyq" path="res://Speaker.tscn" id="2_ye3ne"]
 
 [node name="SpeakerSocket" type="Node2D"]
+script = ExtResource("1_fk2sa")
 
 [node name="Input" parent="." instance=ExtResource("1_jdnkq")]
 
-[node name="Output" parent="." node_paths=PackedStringArray("bound_socket") instance=ExtResource("1_jdnkq")]
-position = Vector2(256, 0)
-bound_socket = NodePath("../Input")
-
-[node name="Speaker" parent="." node_paths=PackedStringArray("socket") instance=ExtResource("2_ye3ne")]
+[node name="Speaker" parent="." instance=ExtResource("2_ye3ne")]
 position = Vector2(128, 0)
-socket = NodePath("../Input")

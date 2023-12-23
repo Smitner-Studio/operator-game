@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/PulseLight.gd" id="5_vn6ya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mo0gm"]
-radius = 64.0
+radius = 60.0
 
 [node name="Socket" type="Area2D"]
 script = ExtResource("2_vpr58")

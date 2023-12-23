@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://4sqxn8j7wg1v"]
+
+[ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_fx57a"]
+[ext_resource type="Script" path="res://scripts/SplitterSocket.gd" id="1_yxus1"]
+
+[node name="SplitterSocket" type="Node2D"]
+script = ExtResource("1_yxus1")
+
+[node name="Input" parent="." instance=ExtResource("1_fx57a")]
+
+[node name="Output" parent="." instance=ExtResource("1_fx57a")]
+position = Vector2(-64, 128)
+
+[node name="Output2" parent="." instance=ExtResource("1_fx57a")]
+position = Vector2(64, 128)

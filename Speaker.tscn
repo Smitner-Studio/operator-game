@@ -21,7 +21,7 @@ script = ExtResource("3_d52x8")
 [node name="PitchScrollWheel" type="Area2D" parent="."]
 position = Vector2(40, 40)
 script = ExtResource("4_0nxuy")
-scroll_value = 100
+scroll_value = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PitchScrollWheel"]
 shape = SubResource("CircleShape2D_h8a7e")
@@ -32,9 +32,8 @@ texture = ExtResource("5_ocrgl")
 
 [node name="BufferScrollWheel" type="Area2D" parent="."]
 position = Vector2(40, 0)
-scale = Vector2(0.8, 0.8)
 script = ExtResource("4_0nxuy")
-scroll_spin_degrees = 40
+scroll_spin_degrees = 45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BufferScrollWheel"]
 shape = SubResource("CircleShape2D_h8a7e")
