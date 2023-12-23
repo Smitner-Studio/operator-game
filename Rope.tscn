@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://xh6bg6lek4kd"]
+
+[ext_resource type="PackedScene" uid="uid://cvwmwiwkjhg1r" path="res://Wire.tscn" id="1_4vk5d"]
+[ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_fmh6v"]
+[ext_resource type="PackedScene" uid="uid://dh8rlx7ijrt2p" path="res://ReceiveOnlySocket.tscn" id="2_qdm6m"]
+
+[node name="World" type="Node2D"]
+
+[node name="RW" parent="." instance=ExtResource("1_fmh6v")]
+position = Vector2(-254, 0)
+
+[node name="RW2" parent="." instance=ExtResource("1_fmh6v")]
+position = Vector2(441, 66)
+
+[node name="RO" parent="." instance=ExtResource("2_qdm6m")]
+
+[node name="RO2" parent="." instance=ExtResource("2_qdm6m")]
+position = Vector2(53, 270)
+
+[node name="Wire" parent="." instance=ExtResource("1_4vk5d")]
+color = Color(0.71, 0, 0, 1)
+
+[node name="Wire2" parent="." instance=ExtResource("1_4vk5d")]
+position = Vector2(0, -112)
+color = Color(0.627991, 0.704817, 0.881828, 1)
+
+[node name="Wire3" parent="." instance=ExtResource("1_4vk5d")]
+position = Vector2(321, -112)
+color = Color(0.870588, 0.745098, 0.184314, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]

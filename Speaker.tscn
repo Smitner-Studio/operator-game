@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdt7jajrc6iyq"]
+
+[ext_resource type="Script" path="res://scripts/Speaker.gd" id="1_4ktxc"]
+[ext_resource type="Texture2D" uid="uid://b2y4saixkld5c" path="res://sprites/speaker.png" id="2_28gnn"]
+[ext_resource type="Script" path="res://scripts/AudioStreamPlayer2D.gd" id="3_d52x8"]
+[ext_resource type="Script" path="res://scripts/ScrollWheel.gd" id="4_0nxuy"]
+[ext_resource type="Texture2D" uid="uid://b8rsve6xwr6ag" path="res://sprites/scroller.png" id="5_ocrgl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8a7e"]
+
+[node name="Speaker" type="Node2D"]
+script = ExtResource("1_4ktxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_28gnn")
+
+[node name="BeepPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_d52x8")
+
+[node name="ScrollWheel" type="Area2D" parent="."]
+position = Vector2(40, 40)
+script = ExtResource("4_0nxuy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScrollWheel"]
+shape = SubResource("CircleShape2D_h8a7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="ScrollWheel"]
+scale = Vector2(2, 2)
+texture = ExtResource("5_ocrgl")

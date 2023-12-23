@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://cvwmwiwkjhg1r"]
+
+[ext_resource type="Script" path="res://scripts/Wire.gd" id="1_mm6a5"]
+[ext_resource type="Script" path="res://scripts/Rope.gd" id="2_5jjlm"]
+[ext_resource type="Script" path="res://scripts/Plug.gd" id="3_2pt5x"]
+[ext_resource type="Texture2D" uid="uid://bioi0qb3we7ri" path="res://sprites/plug.png" id="3_4wbsj"]
+
+[sub_resource type="Curve" id="Curve_yjcac"]
+_data = [Vector2(0, 1), 0.0, -2.0, 0, 0, Vector2(1, 0.2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_skp0j"]
+_data = [Vector2(2.08165e-12, 0.2), 0.0, 2.08165e-12, 0, 0, Vector2(1, 1), 2.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kv8u4"]
+_data = [Vector2(2.08165e-12, 0.2), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_w17am"]
+_data = [Vector2(0, 0.520231), 0.0, 0.722648, 0, 0, Vector2(1, 0.930636), -0.774769, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsx7d"]
+radius = 32.0
+
+[node name="Wire" type="Node2D"]
+script = ExtResource("1_mm6a5")
+holdingStartCurve = SubResource("Curve_yjcac")
+holdingEndCurve = SubResource("Curve_skp0j")
+notHoldingCurve = SubResource("Curve_kv8u4")
+
+[node name="Rope" type="Node2D" parent="."]
+script = ExtResource("2_5jjlm")
+ropeLength = 50
+gravity = Vector2(2.08165e-12, 40)
+
+[node name="Line2D" type="Line2D" parent="Rope"]
+width = 25.0
+width_curve = SubResource("Curve_w17am")
+default_color = Color(1, 0.101961, 0.101961, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Start" type="Area2D" parent="."]
+script = ExtResource("3_2pt5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Start"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_4wbsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+shape = SubResource("CircleShape2D_fsx7d")
+
+[node name="End" type="Area2D" parent="."]
+position = Vector2(194, 0)
+script = ExtResource("3_2pt5x")
+
+[node name="Sprite2D" type="Sprite2D" parent="End"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_4wbsj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+shape = SubResource("CircleShape2D_fsx7d")

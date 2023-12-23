@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://2n5up2ugjeu4"]
+
+[ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_ikual"]
+[ext_resource type="PackedScene" uid="uid://cvwmwiwkjhg1r" path="res://Wire.tscn" id="3_djxq7"]
+[ext_resource type="PackedScene" uid="uid://bvb6jamteg61b" path="res://SpeakerSocket.tscn" id="4_3os0g"]
+[ext_resource type="Script" path="res://scripts/MorseCodeEncoder.gd" id="5_3qdlp"]
+[ext_resource type="PackedScene" uid="uid://dh6q0ydy17h28" path="res://DecoderSocket.tscn" id="5_jiu0s"]
+
+[node name="World" type="Node2D"]
+
+[node name="SpeakerSocket" parent="." instance=ExtResource("4_3os0g")]
+position = Vector2(64, -192)
+
+[node name="SpeakerSocket2" parent="." instance=ExtResource("4_3os0g")]
+position = Vector2(-384, 192)
+
+[node name="DecoderSocket" parent="." instance=ExtResource("5_jiu0s")]
+position = Vector2(256, 192)
+
+[node name="Output" parent="." instance=ExtResource("1_ikual")]
+position = Vector2(-256, -192)
+
+[node name="Wire" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(-128, -64)
+color = Color(0.71, 0, 0, 1)
+
+[node name="Wire3" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(-128, 64)
+color = Color(0.71, 0, 0, 1)
+
+[node name="Wire4" parent="." instance=ExtResource("3_djxq7")]
+position = Vector2(-128, 0)
+color = Color(0.71, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="MC_Hello" type="Node" parent="." node_paths=PackedStringArray("output_socket")]
+script = ExtResource("5_3qdlp")
+output_socket = NodePath("../Output")
+message = " THIS IS FUCKING  SLOWX"
