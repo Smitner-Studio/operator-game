@@ -52,9 +52,54 @@ position = Vector2(-128, 128)
 color = Color(0.870588, 0.745098, 0.184314, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
 
 [node name="MC_Hello" type="Node" parent="." node_paths=PackedStringArray("output_socket")]
 script = ExtResource("5_3qdlp")
 output_socket = NodePath("../Output")
 message = " THIS IS FUCKING  SLOWX"
+
+[node name="PanelContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]\"A\"[/b]: \".-\"
+[b]\"B\"[/b]: \"-...\"
+[b]\"C\"[/b]: \"-.-.\"
+[b]\"D\"[/b]: \"-..\"
+[b]\"E\"[/b]: \".\"
+[b]\"F\"[/b]: \"..-.\"
+[b]\"G\"[/b]: \"--.\"
+[b]\"H\"[/b]: \"....\"
+[b]\"I\"[/b]: \"..\"
+[b]\"J\"[/b]: \".---\"
+[b]\"K\"[/b]: \"-.-\"
+[b]\"L\"[/b]: \".-..\"
+[b]\"M\"[/b]: \"--\"
+[b]\"N\"[/b]: \"-.\"
+[b]\"O\"[/b]: \"---\"
+[b]\"P\"[/b]: \".--.\"
+[b]\"Q\"[/b]: \"--.-\"
+[b]\"R\"[/b]: \".-.\"
+[b]\"S\"[/b]: \"...\"
+[b]\"T\"[/b]: \"-\"
+[b]\"U\"[/b]: \"..-\"
+[b]\"V\"[/b]: \"...-\"
+[b]\"W\"[/b]: \".--\"
+[b]\"X\"[/b]: \"-..-\"
+[b]\"Y\"[/b]: \"-.--\"
+[b]\"Z\"[/b]: \"--..\"
+"

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b8rsve6xwr6ag" path="res://sprites/scroller.png" id="5_ocrgl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h8a7e"]
+radius = 15.0
 
 [node name="Speaker" type="Node2D"]
 script = ExtResource("1_4ktxc")
@@ -23,21 +24,21 @@ position = Vector2(40, 40)
 script = ExtResource("4_0nxuy")
 scroll_value = 50
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PitchScrollWheel"]
-shape = SubResource("CircleShape2D_h8a7e")
-
 [node name="Sprite2D" type="Sprite2D" parent="PitchScrollWheel"]
 scale = Vector2(2, 2)
 texture = ExtResource("5_ocrgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PitchScrollWheel"]
+shape = SubResource("CircleShape2D_h8a7e")
 
 [node name="BufferScrollWheel" type="Area2D" parent="."]
 position = Vector2(40, 0)
 script = ExtResource("4_0nxuy")
 scroll_spin_degrees = 45
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BufferScrollWheel"]
-shape = SubResource("CircleShape2D_h8a7e")
-
 [node name="Sprite2D" type="Sprite2D" parent="BufferScrollWheel"]
 scale = Vector2(2, 2)
 texture = ExtResource("5_ocrgl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BufferScrollWheel"]
+shape = SubResource("CircleShape2D_h8a7e")
