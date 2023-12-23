@@ -3,12 +3,13 @@ extends Area2D
 class_name ScrollWheel
 
 
-@export var scroll_spin = 0.5
+@export var scroll_spin_degrees = 10
+@export var scroll_value = 1
 var listening = false
 
-signal scroll_up
-signal scroll_down
+signal scroll
 
+@onready var _scroll_spin_rad = deg_to_rad(scroll_spin_degrees)
 
 func _ready():
 	mouse_entered.connect(func(): listening = true)
@@ -19,9 +20,9 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	if event.is_action_released("scroll_up"):
-		scroll_up.emit()
-		$Sprite2D.rotation -= scroll_spin
+		scroll.emit(-scroll_value)
+		$Sprite2D.rotation -= _scroll_spin_rad
 	if event.is_action_released("scroll_down"):
-		scroll_down.emit()
-		$Sprite2D.rotation += scroll_spin
+		scroll.emit(scroll_value)
+		$Sprite2D.rotation += _scroll_spin_rad
 	

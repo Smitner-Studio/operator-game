@@ -24,10 +24,10 @@ func set_buffer():
 	message_buffer = []
 	for char in encoded:
 		message_buffer.append(char)
+	message_buffer.reverse()
 	
 func do_next():
-	var next = message_buffer.pop_front()
-	print(next)
+	var next = message_buffer.pop_back()
 	var t = MorseCodeSystem.long_pulse_duration
 	match next:
 		MorseCodeSystem.dot:
