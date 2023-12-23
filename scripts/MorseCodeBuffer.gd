@@ -5,6 +5,7 @@ class_name MorseCodeBuffer
 signal pulse
 signal letter_stored
 signal incoming_buffer_cleared
+signal outgoing_buffer_transmitted
 
 var incoming_buffer = []
 var outgoing_buffer = []
@@ -12,9 +13,9 @@ var time_to_next = 0
 
 func receive_pulse(duration):
 	if duration <= MorseCodeSystem.short_pulse_duration:
-		incoming_buffer.append(".")
+		incoming_buffer.append(MorseCodeSystem.dot)
 	elif duration > MorseCodeSystem.short_pulse_duration:
-		incoming_buffer.append("-")
+		incoming_buffer.append(MorseCodeSystem.dash)
 
 func append_letter_separator():
 	if not is_last_separator(MorseCodeSystem.letter_break):
@@ -58,7 +59,9 @@ func do_next():
 		MorseCodeSystem.word_break:
 			t = MorseCodeSystem.word_pause_duration
 	time_to_next = Time.get_ticks_msec() + (t * 1000)
+	
+	if outgoing_buffer.is_empty():
+		outgoing_buffer_transmitted.emit()
 
 func emit_pulse(len: float):
-	print(len)
 	pulse.emit(len)  

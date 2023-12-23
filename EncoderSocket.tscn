@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://e3tb6odtw03n"]
+[gd_scene load_steps=6 format=3 uid="uid://e3tb6odtw03n"]
 
 [ext_resource type="Script" path="res://scripts/EncoderSocket.gd" id="1_mffsl"]
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="2_prvr1"]
 [ext_resource type="Script" path="res://scripts/MorseCodeBuffer.gd" id="3_wur88"]
 [ext_resource type="PackedScene" uid="uid://cdfjj1opbtylj" path="res://MorseButton.tscn" id="4_sc2x5"]
+[ext_resource type="PackedScene" uid="uid://beu8kpci0chc2" path="res://InputScreen.tscn" id="5_532fb"]
 
 [node name="EncoderSocket" type="Node2D"]
 script = ExtResource("1_mffsl")
@@ -14,12 +15,7 @@ primary_signal_direction = 0
 [node name="MorseButton" parent="." instance=ExtResource("4_sc2x5")]
 position = Vector2(0, -64)
 
-[node name="Label" type="Label" parent="."]
-offset_left = -32.0
-offset_top = -128.0
-offset_right = 33.0
-offset_bottom = -105.0
-text = "ENCODE"
-
 [node name="MorseCodeBuffer" type="Node" parent="."]
 script = ExtResource("3_wur88")
+
+[node name="InputScreen" parent="." instance=ExtResource("5_532fb")]
