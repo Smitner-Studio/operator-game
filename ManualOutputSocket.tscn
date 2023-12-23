@@ -9,6 +9,7 @@ script = ExtResource("1_icjix")
 
 [node name="Socket" parent="." instance=ExtResource("1_eo28v")]
 position = Vector2(-32, -32)
+primary_signal_direction = 0
 
 [node name="MorseButton" parent="." instance=ExtResource("3_28udi")]
 position = Vector2(-96, -32)

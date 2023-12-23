@@ -10,12 +10,14 @@
 script = ExtResource("1_gch3a")
 
 [node name="Input" parent="." instance=ExtResource("1_84y47")]
+primary_signal_direction = 1
 
 [node name="Save" parent="." instance=ExtResource("1_84y47")]
 position = Vector2(0, 64)
 
 [node name="Output" parent="." instance=ExtResource("1_84y47")]
 position = Vector2(192, 0)
+primary_signal_direction = 0
 
 [node name="Button" parent="." instance=ExtResource("5_i7la6")]
 position = Vector2(192, 64)

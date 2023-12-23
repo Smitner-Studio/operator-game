@@ -3,10 +3,6 @@
 extends Node2D
 
 @onready var wire: Wire = get_parent()
-
-func _ready():
-	if Engine.is_editor_hint():
-		wire.get_components()
 		
 func _process(delta):
 	if Engine.is_editor_hint():

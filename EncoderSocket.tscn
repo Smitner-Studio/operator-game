@@ -9,6 +9,7 @@
 script = ExtResource("1_mffsl")
 
 [node name="Socket" parent="." instance=ExtResource("2_prvr1")]
+primary_signal_direction = 0
 
 [node name="MorseButton" parent="." instance=ExtResource("4_sc2x5")]
 position = Vector2(0, -64)

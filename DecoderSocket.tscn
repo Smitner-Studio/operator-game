@@ -13,6 +13,7 @@ screen = NodePath("Screen")
 
 [node name="Socket" parent="." instance=ExtResource("1_r44bn")]
 position = Vector2(32, -32)
+primary_signal_direction = 1
 
 [node name="Screen" parent="." instance=ExtResource("3_fileb")]
 

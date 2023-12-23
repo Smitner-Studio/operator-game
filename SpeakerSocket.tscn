@@ -9,6 +9,7 @@ script = ExtResource("1_fk2sa")
 
 [node name="Input" parent="." instance=ExtResource("1_jdnkq")]
 position = Vector2(32, -32)
+primary_signal_direction = 1
 
 [node name="Speaker" parent="." instance=ExtResource("2_ye3ne")]
 position = Vector2(128, 0)
