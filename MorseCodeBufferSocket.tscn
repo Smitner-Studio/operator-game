@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0i0e43xx73yv"]
+[gd_scene load_steps=6 format=3 uid="uid://c0i0e43xx73yv"]
 
 [ext_resource type="PackedScene" uid="uid://bwy6ncbvsjk5a" path="res://Socket.tscn" id="1_84y47"]
+[ext_resource type="Script" path="res://scripts/MorseCodeBufferSocket.gd" id="1_gch3a"]
 [ext_resource type="PackedScene" uid="uid://qrr3nd843jwg" path="res://Screen.tscn" id="2_lhp4o"]
 [ext_resource type="Script" path="res://scripts/MorseCodeBuffer.gd" id="4_3oy6a"]
+[ext_resource type="PackedScene" uid="uid://cdfjj1opbtylj" path="res://MorseButton.tscn" id="5_i7la6"]
 
-[node name="Buffer" type="Node2D"]
+[node name="MorseBufferSocket" type="Node2D"]
+script = ExtResource("1_gch3a")
 
 [node name="Input" parent="." instance=ExtResource("1_84y47")]
 
@@ -14,8 +17,11 @@ position = Vector2(0, 64)
 [node name="Output" parent="." instance=ExtResource("1_84y47")]
 position = Vector2(192, 0)
 
+[node name="Button" parent="." instance=ExtResource("5_i7la6")]
+position = Vector2(192, 64)
+
 [node name="Screen" parent="." instance=ExtResource("2_lhp4o")]
 position = Vector2(96, 32)
 
-[node name="Node" type="Node" parent="."]
+[node name="MorseCodeBuffer" type="Node" parent="."]
 script = ExtResource("4_3oy6a")

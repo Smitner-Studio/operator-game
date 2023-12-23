@@ -16,6 +16,7 @@ class_name Wire
 @export var notHoldingCurve: Curve
 
 func _ready():
+	
 	start.position_updated.connect(rope.set_start_point)
 	end.position_updated.connect(rope.set_end_point)
 	
