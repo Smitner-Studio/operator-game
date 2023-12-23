@@ -14,9 +14,6 @@ func receive_pulse(duration):
 	last_pulse_received_time = current_time
 	var pause_in_seconds = pause_duration * 0.001
 
-	if pause_in_seconds >= MorseCodeSystem.word_pause_duration and not is_last_separator(MorseCodeSystem.word_break):
-		append_separator(MorseCodeSystem.word_break)
-		print(name + ": word received")
 	if pause_in_seconds >= MorseCodeSystem.letter_pause_duration and not is_last_separator(MorseCodeSystem.letter_break):
 		append_separator(MorseCodeSystem.letter_break)
 		print(name + ": letter received")
