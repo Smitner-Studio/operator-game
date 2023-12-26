@@ -27,6 +27,17 @@ position = Vector2(320, -64)
 [node name="DecoderSocket" parent="." instance=ExtResource("5_jiu0s")]
 position = Vector2(256, 192)
 
+[node name="DecoderSocket2" parent="." instance=ExtResource("5_jiu0s")]
+position = Vector2(-320, -160)
+screen_update_mode = 1
+
+[node name="DecoderSocket3" parent="." instance=ExtResource("5_jiu0s")]
+position = Vector2(-512, -160)
+
+[node name="DecoderSocket4" parent="." instance=ExtResource("5_jiu0s")]
+position = Vector2(-128, -160)
+screen_update_mode = 0
+
 [node name="ManualOutputSocket" parent="." instance=ExtResource("7_bxa4c")]
 position = Vector2(-384, 64)
 
@@ -34,7 +45,7 @@ position = Vector2(-384, 64)
 position = Vector2(-544, -320)
 
 [node name="MorseBufferSocket" parent="." instance=ExtResource("6_w28jl")]
-position = Vector2(-161, 52)
+position = Vector2(-160, 64)
 
 [node name="Wire" parent="." instance=ExtResource("3_djxq7")]
 position = Vector2(-416, 30)
@@ -116,22 +127,30 @@ text = "[b]\"A\"[/b]: \".-\"
 position = Vector2(-171, 317)
 
 [node name="Wire4" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(154, -121)
+position = Vector2(-544, -320)
+
+[node name="End" parent="Wire4" index="2"]
+position = Vector2(128, -64)
 
 [node name="Wire5" parent="." instance=ExtResource("3_djxq7")]
 position = Vector2(243, -130)
 color = Color(0.71, 0, 0, 1)
 
 [node name="Wire7" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(602, -324)
+position = Vector2(-352, -384)
+
+[node name="End" parent="Wire7" index="2"]
+position = Vector2(-128, 192)
 
 [node name="Wire8" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(683, -320)
+position = Vector2(-288, -384)
 
 [node name="Wire9" parent="." instance=ExtResource("3_djxq7")]
-position = Vector2(782, -315)
+position = Vector2(-96, -384)
 
 [editable path="Wire"]
 [editable path="Wire6"]
 [editable path="Wire2"]
 [editable path="Wire3"]
+[editable path="Wire4"]
+[editable path="Wire7"]

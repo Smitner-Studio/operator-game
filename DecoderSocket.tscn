@@ -5,17 +5,18 @@
 [ext_resource type="Script" path="res://scripts/MorseCodeDecoder.gd" id="2_26oc1"]
 [ext_resource type="PackedScene" uid="uid://qrr3nd843jwg" path="res://Screen.tscn" id="3_fileb"]
 
-[node name="DecoderSocket" type="Node2D" node_paths=PackedStringArray("decoder", "socket", "screen")]
+[node name="DecoderSocket" type="Node2D"]
 script = ExtResource("1_y23fy")
-decoder = NodePath("Decoder")
-socket = NodePath("Socket")
-screen = NodePath("Screen")
+screen_update_mode = 2
 
 [node name="Socket" parent="." instance=ExtResource("1_r44bn")]
+unique_name_in_owner = true
 position = Vector2(32, -32)
 primary_signal_direction = 1
 
 [node name="Screen" parent="." instance=ExtResource("3_fileb")]
+unique_name_in_owner = true
 
 [node name="Decoder" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_26oc1")

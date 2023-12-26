@@ -13,13 +13,17 @@ static var morse_code = {
 	"1": ".----", "2": "..---", "3": "...--",
 	"4": "....-", "5": ".....", "6": "-....",
 	"7": "--...", "8": "---..", "9": "----.",
-	"0": "-----"
+	"0": "-----",
+	
+	".": ".-.-.-", ",": "--..--", "?": "..--..",
+	";": "-.-.-.", ":": "---...", "-": "-....-",
+	"/": "_.._.", "'": ".----.", "\"": ".-..-.",
 }
 
 static var inv_morse_code = MorseCodeSystem.invert_dictionary(morse_code)
 
 # Duration of a short and long pulse (dot and dash)
-static var short_pulse_duration = 0.04
+static var short_pulse_duration = 0.01
 static var long_pulse_duration = short_pulse_duration * 3
 
 static var letter_pause_duration = long_pulse_duration * 1.5
@@ -54,20 +58,19 @@ static func encode_into_array(message: String) -> Array:
 # Decode Morse code back into text
 static func decode(morse_message: String) -> String:
 	var decoded_message = ""
-	var morse_characters = morse_message.split(word_break)  # Split at word breaks
+	var morse_words = morse_message.split(word_break)  # Split at word breaks
 
-	for morse_word in morse_characters:
+	for morse_word in morse_words:
 		var letters = morse_word.split(letter_break)  # Split at letter breaks
 		for morse_letter in letters:
 			if morse_letter != "":
 				decoded_message += inv_morse_code.get(morse_letter, "?") # Decode each Morse letter
-		decoded_message += " "  # Add a space after each word
-
+		if (morse_words.size() > 1):
+			decoded_message += " "  # Add a space after each word
 	return decoded_message
 	
 static func decode_from_array(buffer: Array) -> String:
-	var message =  ''.join(buffer)
-	return decode(message)
+	return decode(array_to_str(buffer))
 	
 # Function to invert a dictionary (swap its keys and values)
 static func invert_dictionary(dict : Dictionary) -> Dictionary:
@@ -80,11 +83,14 @@ static func invert_dictionary(dict : Dictionary) -> Dictionary:
 			printerr("Duplicate value found when attempting to invert dictionary: ", dict[key])
 	return inverted_dict
 	
-static func str_to_array(encoded: String) -> Array:
+static func str_to_array(str: String) -> Array:
 	var message_buffer = []
-	for char in encoded:
+	for char in str:
 		message_buffer.append(char)
 	return message_buffer
+	
+static func array_to_str(array: Array) -> String:
+	return ''.join(array)
 	
 
 # Example usage

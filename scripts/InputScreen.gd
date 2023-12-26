@@ -8,3 +8,6 @@ func clear():
 
 func get_text():
 	return input_field.text
+
+func set_text(x: String):
+	input_field.text = x

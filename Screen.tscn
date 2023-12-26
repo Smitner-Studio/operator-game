@@ -20,9 +20,10 @@ offset_left = -56.0
 offset_top = -56.0
 offset_right = 56.0
 offset_bottom = 56.0
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="RichTextLabel" parent="Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -30,5 +31,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-autowrap_mode = 1
-uppercase = true
+mouse_filter = 2
+scroll_following = true

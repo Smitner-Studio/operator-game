@@ -8,14 +8,19 @@
 
 [node name="EncoderSocket" type="Node2D"]
 script = ExtResource("1_mffsl")
+message = "THE LAZY BROWN DOG JUMPED OR SOMETHING"
 
 [node name="Socket" parent="." instance=ExtResource("2_prvr1")]
+unique_name_in_owner = true
 primary_signal_direction = 0
 
 [node name="MorseButton" parent="." instance=ExtResource("4_sc2x5")]
+unique_name_in_owner = true
 position = Vector2(0, -64)
 
 [node name="MorseCodeBuffer" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_wur88")
 
 [node name="InputScreen" parent="." instance=ExtResource("5_532fb")]
+unique_name_in_owner = true
