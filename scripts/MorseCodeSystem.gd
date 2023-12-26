@@ -59,10 +59,15 @@ static func decode(morse_message: String) -> String:
 	for morse_word in morse_characters:
 		var letters = morse_word.split(letter_break)  # Split at letter breaks
 		for morse_letter in letters:
-			decoded_message += inv_morse_code.get(morse_letter, "")  # Decode each Morse letter
+			if morse_letter != "":
+				decoded_message += inv_morse_code.get(morse_letter, "?") # Decode each Morse letter
 		decoded_message += " "  # Add a space after each word
 
 	return decoded_message
+	
+static func decode_from_array(buffer: Array) -> String:
+	var message =  ''.join(buffer)
+	return decode(message)
 	
 # Function to invert a dictionary (swap its keys and values)
 static func invert_dictionary(dict : Dictionary) -> Dictionary:

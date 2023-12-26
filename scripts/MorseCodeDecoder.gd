@@ -35,7 +35,7 @@ func _process(delta):
 		print(name + ": letter received")
 
 func decode_and_clear_buffer():
-	var message = MorseCodeSystem.decode(str_from_pulse_buffer())
+	var message = MorseCodeSystem.decode_from_array(pulse_buffer)
 	pulse_buffer.clear()
 	decoded.emit(message)
 
