@@ -13,10 +13,10 @@
 script = ExtResource("1_rvskp")
 
 [node name="SplitterSocket" parent="." instance=ExtResource("1_xfkek")]
-position = Vector2(-256, -256)
+position = Vector2(-256, -384)
 
 [node name="SplitterSocket2" parent="." instance=ExtResource("1_xfkek")]
-position = Vector2(64, -256)
+position = Vector2(192, -384)
 
 [node name="SpeakerSocket" parent="." instance=ExtResource("4_3os0g")]
 position = Vector2(320, -192)
@@ -31,7 +31,7 @@ position = Vector2(256, 192)
 position = Vector2(-384, 64)
 
 [node name="EncoderSocket" parent="." instance=ExtResource("13_4v1bs")]
-position = Vector2(-511, -252)
+position = Vector2(-544, -320)
 
 [node name="MorseBufferSocket" parent="." instance=ExtResource("6_w28jl")]
 position = Vector2(-161, 52)

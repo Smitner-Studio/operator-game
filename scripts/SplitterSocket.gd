@@ -1,10 +1,17 @@
 extends Node2D
 
-
-@onready var input: Socket = $Input
-@onready var output_1: Socket = $Output
-@onready var output_2: Socket = $Output2
+var sockets: Array[Socket]
 
 func _ready():
-	input.received_pulse.connect(output_1.emit_pulse)
-	input.received_pulse.connect(output_2.emit_pulse)
+	
+	for child in get_children():
+		if child is Socket:
+			sockets.append(child)
+	
+	for child in get_children():
+		if not child is Socket: continue
+		var receiver = child as Socket
+		for emitter in sockets:
+			if emitter == receiver: continue
+			receiver.received_pulse.connect(emitter.emit_pulse)
+		
