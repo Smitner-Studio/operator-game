@@ -23,7 +23,7 @@ static var morse_code = {
 static var inv_morse_code = MorseCodeSystem.invert_dictionary(morse_code)
 
 # Duration of a short and long pulse (dot and dash)
-static var short_pulse_duration = 0.01
+static var short_pulse_duration = 0.05
 static var long_pulse_duration = short_pulse_duration * 3
 
 static var letter_pause_duration = long_pulse_duration * 1.5

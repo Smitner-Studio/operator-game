@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwy6ncbvsjk5a"]
+[gd_scene load_steps=5 format=3 uid="uid://bwy6ncbvsjk5a"]
 
 [ext_resource type="Texture2D" uid="uid://ofqqo7oocvve" path="res://sprites/socket.png" id="2_tdpoy"]
 [ext_resource type="Script" path="res://sprites/Socket.gd" id="2_vpr58"]
-[ext_resource type="Texture2D" uid="uid://i63ua1pblvqg" path="res://sprites/led.png" id="4_m3elu"]
-[ext_resource type="Script" path="res://scripts/PulseLight.gd" id="5_vn6ya"]
+[ext_resource type="PackedScene" uid="uid://65pfvqouoaso" path="res://LED.tscn" id="3_lw53d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mo0gm"]
 radius = 30.0
@@ -17,18 +16,12 @@ texture = ExtResource("2_tdpoy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_mo0gm")
 
-[node name="IncomingLED" type="Sprite2D" parent="." node_paths=PackedStringArray("socket")]
-position = Vector2(-24, -24)
-texture = ExtResource("4_m3elu")
-script = ExtResource("5_vn6ya")
+[node name="IncomingLED" parent="." node_paths=PackedStringArray("socket") instance=ExtResource("3_lw53d")]
+position = Vector2(-20, -20)
 socket = NodePath("..")
-signal_name = "received_pulse"
-color = Color(0, 1, 0, 1)
 
-[node name="OutgoingLED" type="Sprite2D" parent="." node_paths=PackedStringArray("socket")]
-position = Vector2(-24, -16)
-texture = ExtResource("4_m3elu")
-script = ExtResource("5_vn6ya")
+[node name="OutgoingLED" parent="." node_paths=PackedStringArray("socket") instance=ExtResource("3_lw53d")]
+position = Vector2(-20, -8)
 socket = NodePath("..")
 signal_name = "pulse"
 color = Color(1, 0, 0, 1)

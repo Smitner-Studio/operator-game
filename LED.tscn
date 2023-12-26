@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://65pfvqouoaso"]
+
+[ext_resource type="Texture2D" uid="uid://i63ua1pblvqg" path="res://sprites/led.png" id="1_3kea0"]
+[ext_resource type="Script" path="res://scripts/PulseLight.gd" id="2_vw1om"]
+
+[node name="IncomingLED" type="Sprite2D"]
+modulate = Color(0.196078, 0.278431, 0.407843, 1)
+texture = ExtResource("1_3kea0")
+script = ExtResource("2_vw1om")
+signal_name = "received_pulse"
+color = Color(0, 1, 0, 1)

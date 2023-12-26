@@ -4,7 +4,8 @@ extends Sprite2D
 @export var signal_name: String
 
 @export var color: Color
-@export var flash_duration: float = 0.2
+
+@onready var default_modulate_color = modulate
 
 func _ready():
 	socket.connect(signal_name, flash)
@@ -12,4 +13,4 @@ func _ready():
 func flash(len: float):
 	modulate = color
 	await get_tree().create_timer(len).timeout
-	modulate = Color.WHITE
+	modulate = default_modulate_color

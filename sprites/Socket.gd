@@ -7,6 +7,8 @@ enum SignalDirection {
 	Send, Receive, Both
 }
 @export var primary_signal_direction: SignalDirection = SignalDirection.Both
+@onready var sprite := $Sprite2D
+
 
 signal received_pulse
 signal pulse
@@ -14,9 +16,9 @@ signal pulse
 func _ready():
 	match primary_signal_direction:
 		SignalDirection.Send:
-			modulate = Color.LIGHT_BLUE
+			sprite.modulate = Color.LIGHT_BLUE
 		SignalDirection.Receive:
-			modulate = Color.LIGHT_CORAL
+			sprite.modulate = Color.LIGHT_CORAL
 		SignalDirection.Both:
 			pass
 
