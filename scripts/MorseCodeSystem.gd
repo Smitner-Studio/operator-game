@@ -3,13 +3,17 @@ extends Node
 class_name MorseCodeSystem
 
 static var morse_code = {
-	"A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".", "F": "..-.",
-	"G": "--.", "H": "....", "I": "..", "J": ".---", "K": "-.-", "L": ".-..",
-	"M": "--", "N": "-.", "O": "---", "P": ".--.", "Q": "--.-", "R": ".-.",
-	"S": "...", "T": "-", "U": "..-", "V": "...-", "W": ".--", "X": "-..-",
-	"Y": "-.--", "Z": "--..", "1": ".----", "2": "..---", "3": "...--",
-	"4": "....-", "5": ".....", "6": "-....", "7": "--...", "8": "---..",
-	"9": "----.", "0": "-----"
+	"A": ".-", "B": "-...", "C": "-.-.", "D": "-..", "E": ".",
+	"F": "..-.", "G": "--.", "H": "....", "I": "..", "J": ".---",
+	"K": "-.-", "L": ".-..", "M": "--", "N": "-.", "O": "---",
+	"P": ".--.", "Q": "--.-", "R": ".-.", "S": "...", "T": "-",
+	"U": "..-", "V": "...-", "W": ".--", "X": "-..-", "Y": "-.--",
+	"Z": "--..",
+	
+	"1": ".----", "2": "..---", "3": "...--",
+	"4": "....-", "5": ".....", "6": "-....",
+	"7": "--...", "8": "---..", "9": "----.",
+	"0": "-----"
 }
 
 static var inv_morse_code = MorseCodeSystem.invert_dictionary(morse_code)
@@ -42,6 +46,10 @@ static func encode(message: String) -> String:
 			# Add a word break for spaces
 			encoded += word_break
 	return encoded
+	
+static func encode_into_array(message: String) -> Array:
+	var encoded = encode(message)
+	return str_to_array(encoded)
 
 # Decode Morse code back into text
 static func decode(morse_message: String) -> String:
@@ -66,7 +74,13 @@ static func invert_dictionary(dict : Dictionary) -> Dictionary:
 		else:
 			printerr("Duplicate value found when attempting to invert dictionary: ", dict[key])
 	return inverted_dict
-
+	
+static func str_to_array(encoded: String) -> Array:
+	var message_buffer = []
+	for char in encoded:
+		message_buffer.append(char)
+	return message_buffer
+	
 
 # Example usage
 static func test():

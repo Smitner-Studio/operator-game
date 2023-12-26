@@ -10,7 +10,7 @@ func _ready():
 	buffer.pulse.connect(socket.emit_pulse)
 	button.pulse.connect(func(x):
 		var text = input_screen.get_text()
-		var data = MorseCodeEncoder.encode_into_buffer(text)
+		var data = MorseCodeSystem.encode_into_array(text)
 		buffer.release_custom_buffer(data)
 		)
 	buffer.outgoing_buffer_transmitted.connect(input_screen.clear)
